@@ -41,9 +41,7 @@ router.get("/:id", async (req, res) => {
 // uppdate product med id
 router.put("/:id", async (req, res) => {
     try {
-        const updatedProduct = await uppdateProductById(req.params.id, req.body, {
-            new: true, runValidators: true
-        });
+        const updatedProduct = await uppdateProductById(req.params.id, req.body);
 
         if (!updatedProduct) {
             return res.status(404).json({ error: "product not found" });
