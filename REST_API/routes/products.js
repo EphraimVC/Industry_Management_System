@@ -15,7 +15,7 @@ router.post("/", async (req, res) => {
         res.status(201).json(createdProduct);
     } catch (err) {
         if (err.code === 11000) {
-            return res.status(409).json({ error: "Name must be unique" });
+            return res.status(409).json({ error: "SKU must be unique" });
         }
         res
             .status(400)
@@ -58,7 +58,7 @@ router.put("/:id", async (req, res) => {
             });
         }
         if (error.code === 11000) {
-            return res.status(409).json({ error: "Name must be unique" });
+            return res.status(409).json({ error: "SKU must be unique" });
         }
         return res.status(500).json({ error: error.message });
     }
