@@ -1,18 +1,18 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { ApolloServer } from "@apollo/server";
-import { expressMiddleware } from "@as-integrations/express5";
-import { typeDefs } from "../GQL/schema/typeDefs.js";
+// import { ApolloServer } from "@apollo/server";
+// import { expressMiddleware } from "@as-integrations/express5";
+// import { typeDefs } from "../GQL/schema/typeDefs.js";
 dotenv.config();
 
 import productsRouter from "./routes/products.js";
-const apollo = new ApolloServer({ typeDefs });
+// const apollo = new ApolloServer({ typeDefs });
 const app = express();
 app.use(express.json());
 
 // GQL endpoint
-app.use("/gql", expressMiddleware(apollo));
+// app.use("/gql", expressMiddleware(apollo));
 
 app.use("/api/products", productsRouter);
 

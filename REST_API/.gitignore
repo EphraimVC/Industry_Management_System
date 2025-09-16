@@ -1,2 +1,23 @@
 .env
 node_modules/
+
+{
+  "name": "Gaming Keyboard",
+  "sku": "KB-1001",
+  "description": "Mechanical RGB keyboard",
+  "price": 1299,
+  "category": "Peripherals",
+  "amountInStock": 7,
+  "manufacturer": {
+    "name": "KeyPro",
+    "country": "Sweden",
+    "website": "https://keypro.example",
+    "description": "Premium keyboards",
+    "address": "Vasagatan 1, Stockholm",
+    "contact": {
+      "name": "Anna Andersson",
+      "email": "anna@keypro.example",
+      "phone": "+46 70 123 45 67"
+    }
+  }
+}

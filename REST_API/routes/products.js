@@ -1,11 +1,61 @@
 import express from "express";
 const router = express.Router();
-import { findProducts, createProduct, findProductById, uppdateProductById, deleteProductById } from "../db/productCrud.js";
+import { findProducts, createProduct, findProductById, uppdateProductById, deleteProductById, getTotalStockValue, getTotalStockValueByManufacturer, getLowStock, getCriticalStock, getManufacturers} from "../db/productCrud.js";
 
 // GET /products
 router.get("/", async (req, res) => {
     const products = await findProducts();
     res.json(products);
+});
+
+// GET /api/products/total-stock-value
+router.get("/total-stock-value", async (req, res) => {
+  try {
+    const total = await getTotalStockValue();
+    res.json({ totalStockValue: total });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// GET /api/products/total-stock-value-by-manufacturer
+router.get("/total-stock-value-by-manufacturer", async (req, res) => {
+  try {
+    const data = await getTotalStockValueByManufacturer();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// GET /api/products/low-stock
+router.get("/low-stock", async (req, res) => {
+  try {
+    const items = await getLowStock();
+    res.json(items);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// GET /api/products/critical-stock
+router.get("/critical-stock", async (req, res) => {
+  try {
+    const items = await getCriticalStock();
+    res.json(items);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// GET /api/products/manufacturers
+router.get("/manufacturers", async (req, res) => {
+  try {
+    const m = await getManufacturers();
+    res.json(m);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // POST /product
