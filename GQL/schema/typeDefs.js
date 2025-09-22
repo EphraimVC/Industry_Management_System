@@ -25,14 +25,21 @@ export const typeDefs = /* GraphQL */ `
         createdAt: String!
         updatedAt: String!
     }
+
+    type CriticalProduct {
+        productName: String!
+        amountInStock: Int!
+        manufacturer: String
+        contact: Contact
+    }
     type Query {
         products: [Product!]!
         product(id: ID!): Product
-        totalStockValue: float!
+        totalStockValue: Float!
         totalStockValueByManufacturer: [ManufacturerStockValue!]!
-        LowStockProducts: [Product!]!
+        lowStockProducts: [Product!]!
         manufacturers: [Manufacturer!]!
-        criticalStockProducts: [Product!]!
+        criticalStockProducts: [CriticalProduct!]!
     }
 
     type ManufacturerStockValue {
