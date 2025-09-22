@@ -54,31 +54,32 @@ const getLowStock = async () => {
 
 // Kompakt lista för critical stock (< 5)
 const getCriticalStock = async () => {
-  const docs = await ProductModel.find(
-    { amountInStock: { $lt: 5 } },
+  return ProductModel.aggregate([
     {
-      name: 1,
-      amountInStock: 1,
-      "manufacturer.name": 1,
-      "manufacturer.contact.name": 1,
-      "manufacturer.contact.phone": 1,
-      "manufacturer.contact.email": 1,
-      _id: 0
+      $match: {
+        amountInStock: { $lt: 5 }
+      }
+    },
+    {
+      $project: {
+        _id: 0,
+        productName: "$name",
+        amountInStock: 1,
+        manufacturer: "$manufacturer.name",
+        contact: {
+          name: "$manufacturer.contact.name",
+          phone: "$manufacturer.contact.phone",
+          email: "$manufacturer.contact.email"
+        }
+      }
+    },
+    {
+      $sort: {
+        amountInStock: 1
+      }
     }
-  ).lean().exec();
-
-  return docs.map(d => ({
-    productName: d.name,
-    amountInStock: d.amountInStock,
-    manufacturer: d.manufacturer?.name ?? null,
-    contact: d.manufacturer?.contact ? {
-      name: d.manufacturer.contact.name,
-      phone: d.manufacturer.contact.phone,
-      email: d.manufacturer.contact.email
-    } : null
-  }));
+  ]);
 };
-
 // Lista alla unika manufacturers
 const getManufacturers = async () => {
   return ProductModel.aggregate([
