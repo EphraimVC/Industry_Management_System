@@ -2,22 +2,23 @@
 node_modules/
 
 {
-  "name": "Gaming Keyboard",
-  "sku": "KB-1001",
-  "description": "Mechanical RGB keyboard",
-  "price": 1299,
-  "category": "Peripherals",
-  "amountInStock": 7,
+  "name": "iPhone 15 Pro",
+  "sku": "IPHONE15PRO",
+  "description": "Latest Apple smartphone",
+  "price": 12999,
+  "category": "Electronics",
+  "amountInStock": 25,
   "manufacturer": {
-    "name": "KeyPro",
-    "country": "Sweden",
-    "website": "https://keypro.example",
-    "description": "Premium keyboards",
-    "address": "Vasagatan 1, Stockholm",
+    "name": "Apple Inc.",
+    "country": "USA",
+    "website": "https://apple.com",
+    "description": "Technology company",
+    "address": "One Apple Park Way, Cupertino, CA",
     "contact": {
-      "name": "Anna Andersson",
-      "email": "anna@keypro.example",
-      "phone": "+46 70 123 45 67"
+      "name": "Tim Cook",
+      "email": "tim.cook@apple.com",
+      "phone": "+1-408-996-1010"
     }
   }
+  
 }

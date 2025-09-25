@@ -190,7 +190,7 @@ mutation UpdateProduct($updateProductId: ID!, $input: ProductUpdateInput!) {
 VARIABLES:
 
 {
-  "updateProductId": "68cfc260704441ce110d0e7f",
+  "updateProductId": "68d3bab3e2a392ac93776aca",
   "input": {
     "price": 13999
   }

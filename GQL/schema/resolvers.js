@@ -24,7 +24,7 @@ export const resolvers = {
     },
 
     totalStockValueByManufacturer: async () => {
-        return ProductModel.aggregate([
+      return ProductModel.aggregate([
         {
           $group: {
             _id: "$manufacturer.name",
@@ -64,8 +64,8 @@ export const resolvers = {
                 amountInStock: 1
               }
             }
-          ]);
-        },
+        ]);
+    },
     manufacturers: async () => {
       return ProductModel.aggregate([
         {
@@ -102,15 +102,15 @@ export const resolvers = {
       return updatedProduct;
     },
 
-  deleteProduct: async (_parent, { id }) => {
-    const deletedProduct = await ProductModel.findByIdAndDelete(id).lean();
+    deleteProduct: async (_parent, { id }) => {
+      const deletedProduct = await ProductModel.findByIdAndDelete(id).lean();
 
-    if (!deletedProduct) {
-      throw new Error('Product not found');
+      if (!deletedProduct) {
+        throw new Error('Product not found');
+      }
+
+      return true;
     }
-
-    return true;
-  }
   },
 };
 
